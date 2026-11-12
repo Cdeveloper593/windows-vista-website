@@ -1,0 +1,57 @@
+/* Shell navigation circles — imported by Window after its module CSS. */
+
+.shellNavCircle {
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(
+    circle at 36% 30%,
+    #ffffff 0%,
+    #e6edee 32%,
+    #b9cdd2 62%,
+    #74919b 88%,
+    #3c525c 100%
+  );
+  border: 1px solid rgba(6, 20, 26, 0.85);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.95),
+    inset 0 -2px 3px rgba(20, 44, 54, 0.55),
+    0 1px 1px rgba(255, 255, 255, 0.35),
+    0 0 6px rgba(140, 230, 250, 0.25);
+  transition:
+    box-shadow 0.15s ease,
+    filter 0.15s ease;
+}
+
+.shellNavCircle:not(:disabled):hover {
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.95),
+    inset 0 -2px 3px rgba(20, 44, 54, 0.55),
+    0 0 10px rgba(170, 240, 255, 0.75),
+    0 0 22px rgba(120, 220, 250, 0.45);
+}
+
+.shellNavCircle:not(:disabled):active {
+  filter: brightness(0.85);
+}
+
+.shellNavCircle:disabled {
+  filter: saturate(0.25) brightness(0.82);
+}
+
+.shellNavDropdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 18px;
+  border-radius: 3px;
+  opacity: 0.9;
+}
+
+.shellNavDropdown:hover {
+  background: rgba(255, 255, 255, 0.18);
+}

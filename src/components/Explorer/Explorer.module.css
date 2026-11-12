@@ -1,0 +1,161 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ---------------- grouped tile view (Computer contents) ---------------- */
+.contents {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  padding: 10px 12px 14px;
+  background: linear-gradient(180deg, #ffffff 0%, #fcfdfe 100%);
+}
+
+.contents::-webkit-scrollbar {
+  width: 15px;
+}
+
+.contents::-webkit-scrollbar-track {
+  background: #f2f5f6;
+  border-left: 1px solid #dbe3e7;
+}
+
+.contents::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #fdfefe 0%, #d8e8ef 45%, #aec9d4 100%);
+  border: 1px solid #8ba9b5;
+  border-radius: 7px;
+}
+
+.group {
+  margin: 0 0 12px;
+}
+
+.group:last-child {
+  margin-bottom: 0;
+}
+
+.groupTitle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 3px;
+  padding: 0 2px 3px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #1d4a5e;
+  border-bottom: 1px solid #d7e3e9;
+  text-shadow: 0 1px 0 #ffffff;
+}
+
+.groupChevron {
+  width: 0;
+  height: 0;
+  border-top: 5px solid #5d7b89;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  flex: 0 0 auto;
+}
+
+.itemGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 4px;
+  margin: 0;
+  padding: 2px 0 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 3px 5px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+}
+
+.item:hover {
+  background: linear-gradient(180deg, #f7fbfe 0%, #e8f4fc 100%);
+  border-color: #c4e0f2;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.85);
+}
+
+.itemIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+}
+
+.itemIcon img {
+  display: block;
+}
+
+.itemText {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.itemLabel {
+  font-size: 12px;
+  color: #16242c;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.itemDescription {
+  font-size: 11px;
+  color: #73838b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.emptyState {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding-bottom: 30px;
+  background: radial-gradient(ellipse at 50% 42%, #ffffff 0%, #f3f6f8 70%, #e8ecef 100%);
+}
+
+.emptyTitle {
+  font-size: 19px;
+  font-weight: 600;
+  color: #2b3a44;
+}
+
+.emptyText {
+  font-size: 12px;
+  color: #6a7076;
+}
+
+.statusBar {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 24px;
+  padding: 0 12px;
+  font-size: 11px;
+  color: #3d464e;
+  border-top: 1px solid #d2d8dc;
+  background: linear-gradient(180deg, #fbfcfd, #eef1f3);
+}
+
+.statusDivider {
+  width: 1px;
+  height: 12px;
+  background: #c4ccd2;
+}

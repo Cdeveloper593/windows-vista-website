@@ -1,0 +1,140 @@
+.addressField {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 23px;
+  padding: 0 4px 0 7px;
+  background: linear-gradient(180deg, #eef6f7 0%, #ffffff 30%, #ffffff 100%);
+  border: 1px solid var(--address-border);
+  border-radius: 3px;
+  box-shadow:
+    inset 0 1px 2px rgba(9, 30, 37, 0.28),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.7),
+    0 1px 0 rgba(255, 255, 255, 0.55);
+  overflow: hidden;
+}
+
+.crumbs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.crumb {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.crumbSep {
+  margin-top: 1px;
+  opacity: 0.8;
+}
+
+.crumbText {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--toolbar-text);
+  text-shadow: 0 1px 0 #ffffff;
+}
+
+.crumb:last-child .crumbText {
+  font-weight: 700;
+}
+
+.addressDropdown {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 17px;
+  border-radius: 2px;
+  flex: 0 0 auto;
+}
+
+.addressDropdown:hover {
+  background: rgba(47, 124, 196, 0.18);
+}
+
+.sparkleButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 23px;
+  border-radius: 3px;
+  border: 1px solid rgba(9, 40, 50, 0.45);
+  background: linear-gradient(180deg, #f2fafc 0%, #cfe6ec 55%, #a9cbd4 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 1px 1px rgba(255, 255, 255, 0.5);
+  flex: 0 0 auto;
+}
+
+.sparkleButton:hover {
+  background: linear-gradient(180deg, #ffffff 0%, #dff0f5 55%, #bfe0e8 100%);
+  box-shadow:
+    inset 0 0 6px rgba(190, 240, 255, 0.9),
+    0 0 8px rgba(140, 220, 250, 0.6);
+}
+
+.spinning svg {
+  animation: sparkle-spin 0.65s ease-in-out;
+}
+
+@keyframes sparkle-spin {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.35);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+.searchField {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 190px;
+  height: 23px;
+  padding: 0 6px;
+  background: linear-gradient(180deg, #eef6f7 0%, #ffffff 35%, #ffffff 100%);
+  border: 1px solid var(--address-border);
+  border-radius: 3px;
+  box-shadow:
+    inset 0 1px 2px rgba(9, 30, 37, 0.28),
+    0 1px 0 rgba(255, 255, 255, 0.55);
+  flex: 0 0 auto;
+}
+
+.searchInput {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 12px;
+  font-style: italic;
+  color: var(--toolbar-text);
+}
+
+.searchInput::placeholder {
+  color: #5f7a84;
+}
+
+.searchField:focus-within {
+  border-color: #2f7cc4;
+  box-shadow:
+    inset 0 1px 2px rgba(9, 30, 37, 0.28),
+    0 0 6px rgba(80, 170, 230, 0.65);
+}

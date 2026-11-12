@@ -1,0 +1,220 @@
+.window {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  padding: 3px;
+  background: var(--frame-bg);
+  backdrop-filter: blur(18px) saturate(1.15);
+  -webkit-backdrop-filter: blur(18px) saturate(1.15);
+  border: 1px solid var(--glass-border-outer);
+  border-radius: var(--window-radius);
+  box-shadow:
+    inset 0 0 0 1px var(--glass-border-inner-soft),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 1px 0 0 rgba(255, 255, 255, 0.14),
+    inset -1px 0 0 rgba(255, 255, 255, 0.1),
+    0 2px 5px rgba(0, 0, 0, 0.42),
+    0 22px 55px rgba(0, 0, 0, 0.48);
+  overflow: hidden;
+}
+
+.window.minimized {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.window.maximized {
+  border-radius: 0;
+  border: none;
+  padding: 0;
+}
+
+.window.maximized .inner {
+  border-radius: 0;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(8, 22, 27, 0.85);
+}
+
+/* ---------------- glass caption row ---------------- */
+.titlebar {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  height: 32px;
+  flex: 0 0 auto;
+  background: var(--titlebar-bg);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -1px 0 rgba(6, 26, 32, 0.6);
+  user-select: none;
+  touch-action: none;
+}
+
+.dragSpacer {
+  flex: 1 1 auto;
+}
+
+.navControls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 8px;
+}
+
+/* ---------------- caption buttons ---------------- */
+.captionButtons {
+  display: flex;
+  align-items: stretch;
+}
+
+.captionButton {
+  width: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--caption-min-max);
+  box-shadow:
+    inset 1px 0 0 rgba(255, 255, 255, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -1px 0 rgba(6, 20, 26, 0.5);
+  border-left: 1px solid rgba(8, 22, 27, 0.65);
+  transition:
+    background 0.12s ease,
+    box-shadow 0.12s ease,
+    filter 0.12s ease;
+}
+
+.captionButton:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(186, 226, 240, 0.95) 0%,
+    rgba(88, 152, 173, 0.95) 50%,
+    rgba(38, 83, 101, 0.98) 100%
+  );
+  box-shadow:
+    inset 0 0 10px rgba(190, 240, 255, 0.75),
+    inset 1px 0 0 rgba(255, 255, 255, 0.4),
+    0 0 12px rgba(110, 210, 240, 0.55);
+}
+
+.captionButton:active {
+  filter: brightness(0.82);
+}
+
+.closeButton {
+  width: 38px;
+  background: var(--close-bg);
+  border-top-right-radius: 5px;
+}
+
+.maximized .closeButton {
+  border-top-right-radius: 0;
+}
+
+.closeButton:hover {
+  background: var(--close-bg-hover);
+  box-shadow:
+    inset 0 0 12px rgba(255, 230, 200, 0.8),
+    inset 1px 0 0 rgba(255, 255, 255, 0.4),
+    0 0 18px var(--close-glow);
+}
+
+.closeButton:active {
+  filter: brightness(0.85);
+}
+
+/* ---------------- address/search band ---------------- */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 34px;
+  flex: 0 0 auto;
+  padding: 0 8px;
+  background: var(--toolbar-bg);
+  border-bottom: 1px solid var(--toolbar-border);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* ---------------- body ---------------- */
+.body {
+  flex: 1 1 auto;
+  min-height: 0;
+  background: var(--body-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ---------------- resize handles ---------------- */
+.resizeHandle {
+  position: absolute;
+  z-index: 30;
+  touch-action: none;
+}
+.edge-n {
+  top: -3px;
+  left: 12px;
+  right: 12px;
+  height: 7px;
+  cursor: ns-resize;
+}
+.edge-s {
+  bottom: -3px;
+  left: 12px;
+  right: 12px;
+  height: 7px;
+  cursor: ns-resize;
+}
+.edge-e {
+  right: -3px;
+  top: 12px;
+  bottom: 12px;
+  width: 7px;
+  cursor: ew-resize;
+}
+.edge-w {
+  left: -3px;
+  top: 12px;
+  bottom: 12px;
+  width: 7px;
+  cursor: ew-resize;
+}
+.edge-ne {
+  top: -4px;
+  right: -4px;
+  width: 14px;
+  height: 14px;
+  cursor: nesw-resize;
+}
+.edge-nw {
+  top: -4px;
+  left: -4px;
+  width: 14px;
+  height: 14px;
+  cursor: nwse-resize;
+}
+.edge-se {
+  bottom: -4px;
+  right: -4px;
+  width: 14px;
+  height: 14px;
+  cursor: nwse-resize;
+}
+.edge-sw {
+  bottom: -4px;
+  left: -4px;
+  width: 14px;
+  height: 14px;
+  cursor: nesw-resize;
+}
+
+.maximized .resizeHandle {
+  display: none;
+}

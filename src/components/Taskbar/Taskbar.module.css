@@ -1,0 +1,235 @@
+/* ================= Taskbar ================= */
+.taskbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--taskbar-height);
+  display: flex;
+  align-items: stretch;
+  padding: 0 8px 0 4px;
+  background: var(--taskbar-bg);
+  backdrop-filter: blur(14px) saturate(1.05);
+  -webkit-backdrop-filter: blur(14px) saturate(1.05);
+  border-top: 1px solid var(--taskbar-top-border);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.55),
+    0 -3px 14px rgba(0, 0, 0, 0.4);
+  z-index: 500;
+  user-select: none;
+}
+
+/* ================= Start orb ================= */
+.orb {
+  position: relative;
+  width: var(--orb-size);
+  height: var(--orb-size);
+  margin: -16px 4px 0 2px;
+  align-self: flex-start;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  flex: 0 0 auto;
+  z-index: 2;
+  transition: filter 0.16s ease;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 9px rgba(125, 212, 255, 0.4));
+}
+
+.orbImage {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 50%;
+  pointer-events: none;
+  user-select: none;
+  transition: filter 0.16s ease;
+}
+
+.orb:hover .orbImage {
+  filter: brightness(1.09) saturate(1.08);
+}
+
+.orb.orbOpen .orbImage {
+  filter: brightness(1.14) saturate(1.12);
+}
+
+.orb:hover,
+.orb.orbOpen {
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 14px rgba(130, 222, 255, 0.6));
+}
+
+.orb.orbOpen {
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 20px rgba(140, 225, 255, 0.75));
+}
+
+.orb:active {
+  filter: brightness(0.85);
+}
+/* ================= Quick Launch ================= */
+.quickLaunch {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 0 4px;
+}
+
+.quickLaunchButton {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  transition:
+    background 0.12s ease,
+    box-shadow 0.12s ease;
+}
+
+.quickLaunchButton:hover {
+  background: var(--taskbar-button-hover);
+  border-color: var(--taskbar-button-border);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 0 8px rgba(150, 225, 255, 0.45);
+}
+
+.quickLaunchButton:active {
+  background: var(--taskbar-button-active);
+}
+
+.quickLaunchSeparator {
+  width: 1px;
+  height: 18px;
+  align-self: center;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(255, 255, 255, 0.42) 30%,
+    rgba(255, 255, 255, 0.42) 70%,
+    transparent
+  );
+}
+
+/* ================= Open window buttons ================= */
+.taskButtons {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 0 6px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.taskButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 26px;
+  min-width: 130px;
+  max-width: 180px;
+  padding: 0 10px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.09) 0%,
+    rgba(255, 255, 255, 0.03) 45%,
+    rgba(0, 0, 0, 0.12) 100%
+  );
+  color: #f2f6f7;
+  font-size: 12px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  transition:
+    background 0.12s ease,
+    box-shadow 0.12s ease;
+  white-space: nowrap;
+}
+
+.taskButton:hover {
+  background: var(--taskbar-button-hover);
+  border-color: var(--taskbar-button-border);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 0 10px rgba(150, 225, 255, 0.4);
+}
+
+.taskButtonActive,
+.taskButtonActive:hover {
+  background: var(--taskbar-button-active);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow:
+    inset 0 1px 3px rgba(255, 255, 255, 0.55),
+    inset 0 -2px 4px rgba(8, 26, 20, 0.4),
+    0 0 12px rgba(220, 240, 220, 0.28);
+}
+
+.taskButtonLabel {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 600;
+  text-shadow:
+    0 0 6px rgba(255, 255, 255, 0.45),
+    0 1px 2px rgba(0, 0, 0, 0.85);
+}
+
+.taskButtonIcon {
+  display: flex;
+  align-items: center;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+/* ================= System tray ================= */
+.tray {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 0 6px 0 10px;
+  margin: 3px 0;
+  border-radius: 4px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.16) 0%,
+    rgba(255, 255, 255, 0.06) 40%,
+    rgba(0, 0, 0, 0.18) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.trayIcon {
+  width: 22px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  transition:
+    background 0.12s ease,
+    box-shadow 0.12s ease;
+}
+
+.trayIcon:hover {
+  background: var(--taskbar-button-hover);
+  border-color: var(--taskbar-button-border);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.trayClock {
+  font-size: 12px;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow:
+    0 0 6px rgba(255, 255, 255, 0.4),
+    0 1px 2px rgba(0, 0, 0, 0.9);
+  padding: 0 6px 0 4px;
+  letter-spacing: 0.03em;
+}

@@ -1,0 +1,43 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# playwright artifacts (the reference baseline in e2e/__screenshots__ is committed)
+playwright-report/
+test-results/
+scripts/crop_*.png
+scripts/detail_*.png
+scripts/sidebyside.png
+scripts/shot.png
+scripts/state-*.png
+scripts/probe*.mjs
+scripts/tscfix.ps1
+
+scripts/.tmp-*
+
+# one-off local visual comparison helpers (reference screenshots outside the repo)
+scripts/*.ps1
+scripts/orb*.mjs
+scripts/measure.mjs
+scripts/states.mjs

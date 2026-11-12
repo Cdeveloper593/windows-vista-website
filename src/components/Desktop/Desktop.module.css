@@ -1,0 +1,143 @@
+/* ================= Desktop ================= */
+.desktop {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+.iconColumn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 10;
+}
+
+/* ================= Desktop icon ================= */
+.desktopIcon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  width: 96px;
+  padding: 5px 3px 4px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+}
+
+.iconImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 62px;
+  height: 56px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  transition: background 0.1s ease;
+}
+
+.iconLabel {
+  font-size: 12px;
+  line-height: 1.25;
+  text-align: center;
+  color: #ffffff;
+  text-shadow:
+    1px 1px 2px rgba(0, 0, 0, 0.95),
+    0 0 4px rgba(0, 0, 0, 0.75);
+  padding: 1px 4px;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  max-width: 92px;
+}
+
+.desktopIcon:hover .iconImage {
+  background: rgba(96, 170, 230, 0.25);
+  border-color: rgba(170, 220, 255, 0.4);
+}
+
+.desktopIcon.selected .iconImage {
+  background: rgba(96, 170, 230, 0.38);
+  border-color: rgba(190, 230, 255, 0.75);
+}
+
+.desktopIcon.selected .iconLabel {
+  background: rgba(60, 140, 215, 0.6);
+  border-color: rgba(190, 230, 255, 0.75);
+  box-shadow: inset 0 0 4px rgba(220, 240, 255, 0.5);
+}
+
+/* ================= Shutdown overlay ================= */
+.shutdownOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+  cursor: pointer;
+  animation: aero-fade-in 0.5s ease both;
+}
+
+.shutdownText {
+  color: #e8e8e8;
+  font-size: 30px;
+  font-weight: 200;
+  letter-spacing: 0.02em;
+  animation: shutdown-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes shutdown-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ================= Lock overlay ================= */
+.lockOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at 50% 45%, #14425a 0%, #08222f 65%, #031018 100%);
+  cursor: pointer;
+  animation: aero-fade-in 0.4s ease both;
+}
+
+.lockContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.lockAvatarFrame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.12));
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.6);
+}
+
+.lockName {
+  color: #ffffff;
+  font-size: 34px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
+}
+
+.lockHint {
+  color: #9fc4d4;
+  font-size: 13px;
+}

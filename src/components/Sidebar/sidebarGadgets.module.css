@@ -1,0 +1,537 @@
+/* ============ The Weather Channel — Current Conditions Sidebar gadget ============ */
+.twcGadget {
+  position: relative;
+  align-self: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  border-radius: 7px;
+  background:
+    radial-gradient(
+      circle at 86% 12%,
+      rgba(255, 255, 255, 0.5) 0 0.8px,
+      rgba(255, 255, 255, 0) 1.8px
+    ),
+    radial-gradient(
+      circle at 93% 25%,
+      rgba(255, 255, 255, 0.32) 0 1.2px,
+      rgba(255, 255, 255, 0) 2.6px
+    ),
+    radial-gradient(
+      circle at 12% 38%,
+      rgba(255, 255, 255, 0.22) 0 1px,
+      rgba(255, 255, 255, 0) 2.2px
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.18) 0%,
+      rgba(255, 255, 255, 0.04) 24%,
+      rgba(255, 255, 255, 0) 46%
+    ),
+    radial-gradient(ellipse at 50% 138%, rgba(64, 220, 255, 0.42) 0%, rgba(64, 220, 255, 0) 58%),
+    radial-gradient(ellipse at 50% -70%, rgba(122, 214, 255, 0.38) 0%, rgba(122, 214, 255, 0) 62%),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.014) 0 2px, rgba(0, 0, 0, 0.04) 2px 4px),
+    linear-gradient(180deg, #0d4d7c 0%, #073257 45%, #031d38 100%);
+  border: 2px solid #021424;
+  box-shadow:
+    inset 0 0 0 1px rgba(140, 235, 255, 0.48),
+    inset 0 20px 30px rgba(255, 255, 255, 0.07),
+    inset 0 -16px 26px rgba(0, 10, 25, 0.6),
+    0 5px 16px rgba(0, 0, 0, 0.7),
+    0 0 12px rgba(64, 200, 255, 0.18);
+  font-family: 'Arial Black', Arial, Verdana, sans-serif;
+  user-select: none;
+}
+
+/* ---------- masthead: TWC badge + 8s LIVE / city + Current Conditions / date ---------- */
+.twcHeader {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    'badge eight'
+    'title title'
+    'date date';
+  align-items: start;
+  column-gap: 4px;
+  padding: 2px 6px 0;
+}
+
+.twcBadge {
+  grid-area: badge;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 54px;
+  height: 38px;
+  padding: 2px 4px 3px 5px;
+  margin-top: -18px;
+  border-radius: 4px;
+  border: 1.5px solid #04263f;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.36) 0%, rgba(255, 255, 255, 0) 48%),
+    linear-gradient(180deg, #4cbdf2 0%, #1068ab 48%, #083f66 100%);
+  box-shadow:
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -3px 5px rgba(0, 20, 40, 0.6),
+    0 3px 6px rgba(0, 0, 0, 0.75);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-weight: 800;
+  line-height: 0.95;
+}
+
+.twcBadgeLine1 {
+  font-size: 4.8px;
+  color: #e8f4fb;
+  letter-spacing: 0.01em;
+}
+
+.twcBadgeLine2 {
+  font-size: 9.6px;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  text-shadow: 0 1px 1px #04263f;
+}
+
+.twcBadgeLine3 {
+  font-size: 8.7px;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  text-shadow: 0 1px 1px #04263f;
+}
+
+.twcEight {
+  grid-area: eight;
+  justify-self: end;
+  display: flex;
+  flex-direction: column;
+  width: 34px;
+  margin-top: 3px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1.5px solid #04182a;
+  box-shadow:
+    inset 0 1px 0 #ffffff,
+    0 2px 4px rgba(0, 0, 0, 0.75);
+  line-height: 1;
+}
+
+.twcEightTop {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.5px;
+  background: linear-gradient(180deg, #ffffff 0%, #efeadf 100%);
+  padding: 0.5px 0 1.5px;
+}
+
+.twcEightMain {
+  font-family: 'Arial Black', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 900;
+  font-style: italic;
+  color: #123a6e;
+  letter-spacing: -0.06em;
+}
+
+.twcEightSub {
+  font-family: 'Arial Black', Arial, sans-serif;
+  font-size: 9px;
+  font-weight: 900;
+  font-style: italic;
+  color: #123a6e;
+}
+
+.twcEightLive {
+  background: #123a6e;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+  font-size: 5px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-indent: 0.2em;
+  text-align: center;
+  padding: 0.5px 0 1.5px;
+}
+
+.twcTitleWrap {
+  grid-area: title;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  margin-top: 5px;
+  line-height: 1;
+}
+
+.twcCity {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 13.5px;
+  font-weight: 400;
+  color: #f2f4f6;
+  letter-spacing: 0.01em;
+  text-shadow: 0 1px 2px #000000;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.twcExtended {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 10.5px;
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: -0.02em;
+  color: #a9f6ff;
+  margin-top: 2px;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow:
+    0 0 7px rgba(120, 235, 255, 0.6),
+    1px 1px 0 #04182b,
+    1px 1px 1px rgba(0, 0, 0, 0.65);
+}
+
+.twcDateBlock {
+  grid-area: date;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5px;
+  margin-top: 4px;
+  padding-bottom: 1px;
+  font-family: 'Arial Narrow', Arial, sans-serif;
+  font-size: 5.8px;
+  font-weight: 700;
+  color: #f2f4f6;
+  letter-spacing: 0.04em;
+  text-shadow: 0 1px 1px #000000;
+  white-space: nowrap;
+}
+
+.twcDateDot {
+  color: #8fefff;
+  font-size: 6px;
+}
+
+/* ---------- single chrome-framed teal stat panel ---------- */
+.twcDays {
+  display: flex;
+  padding: 3px 6px 6px;
+}
+
+.twcCard {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 2.5px;
+  border-radius: 7px;
+  background: linear-gradient(
+    168deg,
+    #ffffff 0%,
+    #dbe6ee 13%,
+    #f6fafc 28%,
+    #8c9ca8 45%,
+    #edf4f7 57%,
+    #6f818e 71%,
+    #d8e2e8 85%,
+    #f8fbfd 100%
+  );
+  border: 1px solid #050a0e;
+  box-shadow:
+    0 2px 5px rgba(0, 0, 0, 0.65),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+}
+
+.twcCardInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-height: 138px;
+  border-radius: 4px;
+  padding: 6px 5px 8px;
+  border: 1px solid #052836;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.42) 0%,
+      rgba(255, 255, 255, 0.08) 22%,
+      rgba(255, 255, 255, 0) 45%
+    ),
+    linear-gradient(
+      180deg,
+      #8fe3f2 0%,
+      #5cc8e4 14%,
+      #2f9fc4 36%,
+      #1a789f 58%,
+      #0f587a 78%,
+      #07344f 100%
+    );
+  box-shadow:
+    inset 0 2px 3px rgba(255, 255, 255, 0.6),
+    inset 0 -5px 7px rgba(0, 18, 28, 0.55),
+    inset 3px 0 4px rgba(255, 255, 255, 0.22),
+    inset -3px 0 4px rgba(0, 18, 28, 0.35);
+}
+
+.twcStatLabel {
+  font-family: 'Arial Black', Arial, sans-serif;
+  font-size: 7.2px;
+  font-weight: 800;
+  color: #b9f8ff;
+  letter-spacing: 0.12em;
+  text-align: center;
+  text-shadow:
+    -1px -1px 0 #043246,
+    1px -1px 0 #043246,
+    -1px 1px 0 #043246,
+    1px 1px 0 #043246;
+}
+
+.twcStatIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  filter: drop-shadow(0 2px 1px rgba(0, 10, 16, 0.55));
+}
+
+.twcBigTemp {
+  font-family: 'Arial Black', Arial, sans-serif;
+  font-size: 40px;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+  text-shadow:
+    -1px 0 0 #032636,
+    1px 0 0 #032636,
+    0 -1px 0 #032636,
+    0 1px 0 #032636,
+    -1px -1px 0 #032636,
+    1px -1px 0 #032636,
+    -1px 1px 0 #032636,
+    1px 1px 0 #032636,
+    0 3px 4px rgba(0, 0, 0, 0.45);
+}
+
+.twcBigTempUnit {
+  font-size: 0.38em;
+  vertical-align: 0.95em;
+  margin-left: 1px;
+  letter-spacing: 0;
+}
+
+.twcUnitWord {
+  font-size: 10.5px;
+  font-weight: 800;
+  color: #b9f8ff;
+  letter-spacing: 0.08em;
+  margin-left: 4px;
+  text-shadow:
+    -1px -1px 0 #043246,
+    1px -1px 0 #043246,
+    -1px 1px 0 #043246,
+    1px 1px 0 #043246;
+}
+
+.twcStatDesc {
+  margin-top: 2px;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 8.2px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #ffffff;
+  text-align: center;
+  max-width: 100%;
+  text-shadow:
+    0 -1px 0 #032636,
+    0 1px 0 #032636,
+    -1px 0 0 #032636,
+    1px 0 0 #032636,
+    -1px -1px 0 #032636,
+    1px -1px 0 #032636,
+    -1px 1px 0 #032636,
+    1px 1px 0 #032636,
+    0 2px 2px rgba(0, 0, 0, 0.45);
+}
+
+.twcCompass {
+  flex: 0 0 auto;
+  filter: drop-shadow(0 2px 1px rgba(0, 10, 16, 0.55));
+}
+
+.twcHiLoRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-evenly;
+  width: 100%;
+  gap: 0;
+  margin-top: 4px;
+}
+
+.twcHiLoCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  line-height: 1;
+}
+
+.twcHiLoCap {
+  font-family: 'Arial Black', Arial, sans-serif;
+  font-size: 8px;
+  font-weight: 800;
+  color: #b9f8ff;
+  letter-spacing: 0.08em;
+  margin-bottom: 2px;
+  text-shadow:
+    -1px -1px 0 #043246,
+    1px -1px 0 #043246,
+    -1px 1px 0 #043246,
+    1px 1px 0 #043246;
+}
+
+.twcHiLoNum {
+  font-family: 'Arial Black', Arial, sans-serif;
+  font-size: 21px;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  text-shadow:
+    -1px 0 0 #032636,
+    1px 0 0 #032636,
+    0 -1px 0 #032636,
+    0 1px 0 #032636,
+    -1px -1px 0 #032636,
+    1px -1px 0 #032636,
+    -1px 1px 0 #032636,
+    1px 1px 0 #032636,
+    0 3px 4px rgba(0, 0, 0, 0.45);
+}
+
+/* ---------- lower-third ticker: live conditions, stat dots, city cycling ---------- */
+.twcFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 3px 7px 5px;
+  border-top: 1px solid #041a2c;
+  border-radius: 0 0 6px 6px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0) 48%),
+    linear-gradient(180deg, #135f95 0%, #0a3a63 60%, #052440 100%);
+  box-shadow: inset 0 1px 0 rgba(160, 240, 255, 0.45);
+}
+
+.twcFooterTop {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.twcFooterBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.twcLiveDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #ff2a1a;
+  box-shadow:
+    0 0 4px rgba(255, 70, 40, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  flex: 0 0 auto;
+}
+
+.twcFooterLabel {
+  font-family: Arial, sans-serif;
+  font-size: 6.2px;
+  font-weight: 800;
+  color: #a9f6ff;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 0 #021423;
+  white-space: nowrap;
+}
+
+.twcUpdating {
+  font-family: Verdana, sans-serif;
+  font-size: 6.2px;
+  font-style: italic;
+  color: #bfeaf8;
+  opacity: 0.85;
+  white-space: nowrap;
+}
+
+.twcDots {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.twcDot {
+  width: 6.5px;
+  height: 6.5px;
+  border-radius: 50%;
+  border: 1px solid #8fefff;
+  background: rgba(143, 239, 255, 0.14);
+  padding: 0;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.twcDot:hover {
+  background: rgba(143, 239, 255, 0.45);
+}
+
+.twcDotActive {
+  background: #8fefff;
+  box-shadow: 0 0 4px rgba(143, 239, 255, 0.85);
+}
+
+.twcNav {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.twcNavButton {
+  width: 18px;
+  height: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  border: 1px solid #79e6ff;
+  background: linear-gradient(180deg, #2f9ed6 0%, #0f5686 55%, #072e4f 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    0 1px 1px rgba(0, 0, 0, 0.65),
+    0 0 4px rgba(100, 220, 255, 0.25);
+  transition: filter 0.12s ease;
+}
+
+.twcNavButton:hover {
+  filter: brightness(1.6);
+}
+
+.twcNavButton:active {
+  filter: brightness(0.7);
+}

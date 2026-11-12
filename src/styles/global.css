@@ -1,0 +1,115 @@
+@import './tokens.css';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, 'Segoe UI Variable Text', sans-serif;
+  font-size: 12px;
+  color: var(--body-text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  user-select: none;
+  cursor: default;
+}
+
+.wallpaper {
+  position: fixed;
+  inset: 0;
+  background: url('../assets/wallpaper.jpg') center / cover no-repeat;
+  background-color: #0a6d6e;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  cursor: default;
+}
+
+:focus-visible {
+  outline: 2px dotted var(--focus-ring);
+  outline-offset: 1px;
+}
+
+/* ---------- Aero animations ---------- */
+
+@keyframes aero-window-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes aero-window-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+}
+
+@keyframes aero-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes aero-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes aero-minimize {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(30vh) scale(0.6);
+  }
+}
+
+.window-opening {
+  animation: aero-window-in 0.28s cubic-bezier(0.16, 1.2, 0.3, 1) both;
+}
+
+.window-closing {
+  animation: aero-window-out 0.16s ease-in both;
+}
+
+.window-minimizing {
+  animation: aero-minimize 0.22s ease-in both;
+}
+
+.menu-opening {
+  animation: aero-menu-in 0.18s cubic-bezier(0.2, 1.1, 0.35, 1) both;
+}
