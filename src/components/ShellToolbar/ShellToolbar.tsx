@@ -30,20 +30,37 @@ function AddressIcon() {
 }
 
 function SparklePlusGlyph() {
+  /* Reference detail: the small button beside the search box carries the
+     Vista refresh mark — two curved BLUE arrows chasing each other. */
   return (
-    <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true">
+    <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true">
       <path
-        d="M6 1l1.1 3.1L10.2 5.2 7.1 6.3 6 9.4 4.9 6.3 1.8 5.2l3.1-1.1z"
-        fill="#1b63b7"
-        stroke="#06223f"
-        strokeWidth="0.7"
+        d="M13.2 8a5.2 5.2 0 0 1-9.3 3.2"
+        fill="none"
+        stroke="#2b6cb3"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+      <path
+        d="M3.4 14.6l.5-3.6 3.2 1.7z"
+        fill="#2b6cb3"
+        stroke="#2b6cb3"
+        strokeWidth="0.8"
         strokeLinejoin="round"
       />
       <path
-        d="M12.2 7.6v5.6M9.4 10.4h5.6"
-        stroke="#1b63b7"
-        strokeWidth="1.7"
+        d="M2.8 8a5.2 5.2 0 0 1 9.3-3.2"
+        fill="none"
+        stroke="#2b6cb3"
+        strokeWidth="1.6"
         strokeLinecap="round"
+      />
+      <path
+        d="M12.6 1.4l-.5 3.6-3.2-1.7z"
+        fill="#2b6cb3"
+        stroke="#2b6cb3"
+        strokeWidth="0.8"
+        strokeLinejoin="round"
       />
     </svg>
   )
@@ -58,10 +75,12 @@ function ChevronDownGlyph() {
 }
 
 function SearchGlyph() {
+  /* Reference detail: BLUE magnifier, loop at the upper right with the
+     handle running down to the lower left, pale blue glass fill. */
   return (
     <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true">
-      <circle cx="6.6" cy="6.6" r="4.6" fill="#bfe2f5" stroke="#123f63" strokeWidth="1.5" />
-      <path d="M10.2 10.2l4 4" stroke="#123f63" strokeWidth="1.8" strokeLinecap="round" />
+      <path d="M7.6 9.9L3 14.5" stroke="#2e6da8" strokeWidth="2" strokeLinecap="round" />
+      <circle cx="10.4" cy="6" r="4.4" fill="#dceefb" stroke="#2e6da8" strokeWidth="1.7" />
     </svg>
   )
 }

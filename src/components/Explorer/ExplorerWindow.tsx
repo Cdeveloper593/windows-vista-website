@@ -2,6 +2,7 @@ import type { ReactNode } from 'react'
 import { Window } from '../Window/Window'
 import { ShellNavControls } from '../ShellToolbar/ShellNavControls'
 import { ShellToolbar } from '../ShellToolbar/ShellToolbar'
+import { CommandBar } from './CommandBar'
 import type { WindowId } from '../../store/windowStore'
 import styles from './Explorer.module.css'
 
@@ -45,6 +46,7 @@ export function ExplorerWindow({
       title={title}
       navControls={<ShellNavControls />}
       toolbar={<ShellToolbar crumbs={crumbs ?? [title]} searchPlaceholder={`Search ${title}`} />}
+      commandBar={<CommandBar />}
       bodyClassName={styles.body}
     >
       {hasContents ? (

@@ -15,11 +15,21 @@ export interface WindowProps {
   navControls?: ReactNode
   /** address/search band rendered under the caption row */
   toolbar?: ReactNode
+  /** teal command bar rendered under the address/search band (Explorer) */
+  commandBar?: ReactNode
   children: ReactNode
   bodyClassName?: string
 }
 
-export function Window({ id, title, navControls, toolbar, children, bodyClassName }: WindowProps) {
+export function Window({
+  id,
+  title,
+  navControls,
+  toolbar,
+  commandBar,
+  children,
+  bodyClassName,
+}: WindowProps) {
   const win = useWindowStore((s) => s.windows[id])
   const focusWindow = useWindowStore((s) => s.focusWindow)
   const closeWindow = useWindowStore((s) => s.closeWindow)
@@ -129,7 +139,7 @@ export function Window({ id, title, navControls, toolbar, children, bodyClassNam
                 minimizeWindow(id)
               }}
             >
-              <MinimizeGlyph size={11} />
+              <MinimizeGlyph size={13} />
             </button>
             <button
               type="button"
@@ -139,7 +149,7 @@ export function Window({ id, title, navControls, toolbar, children, bodyClassNam
                 toggleMaximize(id)
               }}
             >
-              {win.isMaximized ? <RestoreGlyph size={11} /> : <MaximizeGlyph size={11} />}
+              {win.isMaximized ? <RestoreGlyph size={13} /> : <MaximizeGlyph size={13} />}
             </button>
             <button
               type="button"
@@ -149,13 +159,16 @@ export function Window({ id, title, navControls, toolbar, children, bodyClassNam
                 closeWindow(id)
               }}
             >
-              <CloseGlyph size={11} />
+              <CloseGlyph size={15} />
             </button>
           </div>
         </div>
 
         {/* ---- address/search band ---- */}
         {toolbar ? <div className={styles.toolbar}>{toolbar}</div> : null}
+
+        {/* ---- teal command bar ---- */}
+        {commandBar ? <div className={styles.commandBar}>{commandBar}</div> : null}
 
         {/* ---- window body ---- */}
         <div className={`${styles.body} ${bodyClassName ?? ''}`}>{children}</div>

@@ -98,7 +98,9 @@ export function MinimizeGlyph({ size = 12, className, title }: IconProps) {
       aria-label={title}
       aria-hidden={title ? undefined : true}
     >
-      <path d="M8 32h32" stroke="#e8f4f6" strokeWidth="4.6" strokeLinecap="round" />
+      {/* reference: a white pill bar with a dark slate outline */}
+      <path d="M9 31h30" stroke="#26343c" strokeWidth="10" strokeLinecap="round" />
+      <path d="M9 31h30" stroke="#ffffff" strokeWidth="5" strokeLinecap="round" />
     </svg>
   )
 }
@@ -114,15 +116,26 @@ export function MaximizeGlyph({ size = 12, className, title }: IconProps) {
       aria-label={title}
       aria-hidden={title ? undefined : true}
     >
+      {/* reference: white square with a dark slate outline on both edges */}
       <rect
-        x="8"
-        y="8"
-        width="32"
-        height="32"
+        x="9"
+        y="9"
+        width="30"
+        height="30"
+        rx="2.5"
+        fill="rgba(255,255,255,0.35)"
+        stroke="#26343c"
+        strokeWidth="7"
+      />
+      <rect
+        x="9"
+        y="9"
+        width="30"
+        height="30"
         rx="2.5"
         fill="none"
-        stroke="#e8f4f6"
-        strokeWidth="4"
+        stroke="#ffffff"
+        strokeWidth="3"
       />
     </svg>
   )
@@ -145,15 +158,32 @@ export function RestoreGlyph({ size = 12, className, title }: IconProps) {
         width="24"
         height="24"
         rx="2.2"
+        fill="rgba(255,255,255,0.35)"
+        stroke="#26343c"
+        strokeWidth="6"
+      />
+      <rect
+        x="6"
+        y="14"
+        width="24"
+        height="24"
+        rx="2.2"
         fill="none"
-        stroke="#e8f4f6"
-        strokeWidth="3.6"
+        stroke="#ffffff"
+        strokeWidth="2.6"
       />
       <path
         d="M16 14V6h26v24h-6"
         fill="none"
-        stroke="#e8f4f6"
-        strokeWidth="3.6"
+        stroke="#26343c"
+        strokeWidth="6"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M16 14V6h26v24h-6"
+        fill="none"
+        stroke="#ffffff"
+        strokeWidth="2.6"
         strokeLinejoin="round"
       />
     </svg>
@@ -171,7 +201,9 @@ export function CloseGlyph({ size = 12, className, title }: IconProps) {
       aria-label={title}
       aria-hidden={title ? undefined : true}
     >
-      <path d="M10 10l28 28M38 10L10 38" stroke="#fff4ee" strokeWidth="4.4" strokeLinecap="round" />
+      {/* reference: bold white X with a dark red-brown outline/shadow */}
+      <path d="M11 11l26 26M37 11L11 37" stroke="#571f0d" strokeWidth="10" strokeLinecap="round" />
+      <path d="M11 11l26 26M37 11L11 37" stroke="#ffffff" strokeWidth="5.4" strokeLinecap="round" />
     </svg>
   )
 }
