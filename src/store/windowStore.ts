@@ -89,7 +89,7 @@ export function createInitialWindows(): Record<WindowId, WindowEntry> {
     },
     'file-explorer': {
       id: 'file-explorer',
-      title: 'File Explorer',
+      title: 'Computer',
       isOpen: false,
       isMinimized: false,
       isMaximized: false,

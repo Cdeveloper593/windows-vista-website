@@ -3,11 +3,12 @@ import { createPortal } from 'react-dom'
 import { useWindowStore } from '../../store/windowStore'
 import { DesktopIcon } from './DesktopIcon'
 import { WelcomeCenter } from '../WelcomeCenter/WelcomeCenter'
-import { ExplorerWindow } from '../Explorer/ExplorerWindow'
 import { FileExplorerWindow } from '../Explorer/FileExplorerWindow'
+import { RecycleBinWindow } from '../Explorer/RecycleBinWindow'
+import { GamesWindow } from '../Explorer/GamesWindow'
 import { Sidebar } from '../Sidebar/Sidebar'
 import { StartMenu } from '../StartMenu/StartMenu'
-import { FileExplorerIcon, FlowerAvatarIcon, GamesIcon, RecycleBinIcon } from '../icons'
+import { ComputerIcon, FlowerAvatarIcon, GamesIcon, RecycleBinIcon } from '../icons'
 import styles from './Desktop.module.css'
 
 type PowerOverlay = 'shutdown' | 'lock' | null
@@ -45,27 +46,13 @@ export function Desktop() {
           icon={<RecycleBinIcon size={54} />}
         />
         <DesktopIcon label="Games" windowId="games" icon={<GamesIcon size={54} />} />
-        <DesktopIcon
-          label="File Explorer"
-          windowId="file-explorer"
-          icon={<FileExplorerIcon size={54} />}
-        />
+        <DesktopIcon label="Computer" windowId="file-explorer" icon={<ComputerIcon size={54} />} />
       </div>
 
       {/* windows */}
       <WelcomeCenter />
-      <ExplorerWindow
-        id="recycle-bin"
-        title="Recycle Bin"
-        icon={<RecycleBinIcon size={118} title="Recycle Bin" />}
-        statusNote="Empty the Recycle Bin"
-      />
-      <ExplorerWindow
-        id="games"
-        title="Games"
-        icon={<GamesIcon size={118} title="Games" />}
-        statusNote="Games"
-      />
+      <RecycleBinWindow />
+      <GamesWindow />
       <FileExplorerWindow />
 
       {/* sidebar gadgets */}

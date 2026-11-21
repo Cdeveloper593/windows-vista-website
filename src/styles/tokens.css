@@ -116,9 +116,9 @@
   /* ---- Glass frame of windows ---- */
   --frame-bg: linear-gradient(
     165deg,
-    rgba(214, 235, 245, 0.55) 0%,
-    rgba(173, 208, 224, 0.48) 40%,
-    rgba(196, 226, 238, 0.52) 100%
+    rgba(214, 235, 245, 0.68) 0%,
+    rgba(173, 208, 224, 0.6) 40%,
+    rgba(196, 226, 238, 0.64) 100%
   );
 
   /* ---- Welcome header (teal panel) ---- */

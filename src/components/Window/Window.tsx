@@ -31,6 +31,12 @@ export function Window({
   bodyClassName,
 }: WindowProps) {
   const win = useWindowStore((s) => s.windows[id])
+  const isTopmost = useWindowStore((s) => {
+    if (!win.isOpen || win.isMinimized) return false
+    return Object.values(s.windows)
+      .filter((w) => w.isOpen && !w.isMinimized)
+      .every((w) => w.zIndex <= win.zIndex)
+  })
   const focusWindow = useWindowStore((s) => s.focusWindow)
   const closeWindow = useWindowStore((s) => s.closeWindow)
   const finishClose = useWindowStore((s) => s.finishClose)
@@ -80,6 +86,7 @@ export function Window({
     win.isClosing ? 'window-closing' : 'window-opening',
     win.isMinimized ? styles.minimized : '',
     win.isMaximized ? styles.maximized : '',
+    win.isOpen && !isTopmost ? styles.inactive : '',
   ]
     .filter(Boolean)
     .join(' ')

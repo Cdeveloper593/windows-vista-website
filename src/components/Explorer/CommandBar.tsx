@@ -1,6 +1,10 @@
 import styles from './CommandBar.module.css'
 
-const COMMANDS = ['Organize', 'Views', 'Share', 'Burn'] as const
+export interface ExplorerCommand {
+  label: string
+  /** render the small dropdown caret after the label (Vista menu commands) */
+  dropdown?: boolean
+}
 
 function HelpGlyph() {
   return (
@@ -37,17 +41,18 @@ function HelpGlyph() {
 
 /**
  * Vista Explorer command bar — the glossy teal slab from the "Windows Aero"
- * reference detail, with command labels on the left and the round blue
- * help button at the right end.
+ * reference detail, with the window's own commands on the left and the round
+ * blue help button at the right end. Each Explorer location passes its real
+ * Vista command set (Computer ≠ Recycle Bin ≠ Games).
  */
-export function CommandBar() {
+export function CommandBar({ commands }: { commands: ExplorerCommand[] }) {
   return (
     <>
       <div className={styles.commands}>
-        {COMMANDS.map((label, i) => (
-          <button type="button" key={label} className={styles.command}>
-            {label}
-            {i < 2 ? (
+        {commands.map((command) => (
+          <button type="button" key={command.label} className={styles.command}>
+            {command.label}
+            {command.dropdown ? (
               <svg viewBox="0 0 10 10" width="7" height="7" aria-hidden="true">
                 <path d="M1.5 3.5 5 7l3.5-3.5z" fill="#dceef2" />
               </svg>

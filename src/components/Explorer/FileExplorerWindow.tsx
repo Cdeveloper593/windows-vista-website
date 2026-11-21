@@ -1,17 +1,11 @@
 import { ExplorerWindow, type ExplorerGroup } from './ExplorerWindow'
-import {
-  DocumentsFolderIcon,
-  DownloadsFolderIcon,
-  DvdDriveIcon,
-  FileExplorerIcon,
-  GamesFolderIcon,
-  HardDriveIcon,
-  MusicFolderIcon,
-  PicturesFolderIcon,
-  VideosFolderIcon,
-} from '../icons'
+import { ComputerIcon, DvdDriveIcon, HardDriveIcon } from '../icons'
 
-/** Vista "Computer" view: the drives and user folders a fresh File Explorer opens to. */
+/**
+ * Vista "Computer" view: drive groups only — personal folders live in the
+ * navigation pane / user folder, not at the Computer root. The hard drive
+ * carries the Tiles-view capacity gauge; the empty optical drive has none.
+ */
 const COMPUTER_GROUPS: ExplorerGroup[] = [
   {
     label: 'Hard Disk Drives',
@@ -19,7 +13,7 @@ const COMPUTER_GROUPS: ExplorerGroup[] = [
       {
         label: 'Local Disk (C:)',
         icon: <HardDriveIcon size={40} title="Local Disk (C:)" />,
-        description: '37.2 GB free of 74.5 GB',
+        capacity: { usedPercent: 50, text: '37.2 GB free of 74.5 GB' },
       },
     ],
   },
@@ -29,42 +23,6 @@ const COMPUTER_GROUPS: ExplorerGroup[] = [
       {
         label: 'DVD RW Drive (D:)',
         icon: <DvdDriveIcon size={40} title="DVD RW Drive (D:)" />,
-        description: 'CD/DVD',
-      },
-    ],
-  },
-  {
-    label: 'Folders',
-    items: [
-      {
-        label: 'Documents',
-        icon: <DocumentsFolderIcon size={40} title="Documents" />,
-        description: 'File folder',
-      },
-      {
-        label: 'Pictures',
-        icon: <PicturesFolderIcon size={40} title="Pictures" />,
-        description: 'File folder',
-      },
-      {
-        label: 'Music',
-        icon: <MusicFolderIcon size={40} title="Music" />,
-        description: 'File folder',
-      },
-      {
-        label: 'Videos',
-        icon: <VideosFolderIcon size={40} title="Videos" />,
-        description: 'File folder',
-      },
-      {
-        label: 'Downloads',
-        icon: <DownloadsFolderIcon size={40} title="Downloads" />,
-        description: 'File folder',
-      },
-      {
-        label: 'Games',
-        icon: <GamesFolderIcon size={40} title="Games" />,
-        description: 'File folder',
       },
     ],
   },
@@ -74,10 +32,20 @@ export function FileExplorerWindow() {
   return (
     <ExplorerWindow
       id="file-explorer"
-      title="File Explorer"
-      icon={<FileExplorerIcon size={118} title="File Explorer" />}
-      statusNote="Computer"
+      title="Computer"
+      addressIcon={<ComputerIcon size={16} />}
       crumbs={['Computer']}
+      commands={[
+        { label: 'Organize', dropdown: true },
+        { label: 'Views', dropdown: true },
+        { label: 'System properties' },
+        { label: 'Uninstall or change a program' },
+        { label: 'Map network drive' },
+      ]}
+      details={{
+        icon: <ComputerIcon size={48} title="Computer" />,
+        title: 'Computer',
+      }}
       groups={COMPUTER_GROUPS}
     />
   )

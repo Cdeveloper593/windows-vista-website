@@ -6,6 +6,10 @@ export interface ShellToolbarProps {
   /** breadcrumb segments, e.g. ['System and Maintenance', 'Welcome Center'] */
   crumbs: string[]
   searchPlaceholder?: string
+  /** accessible name for the search field (Vista shows plain "Search" but scopes the label) */
+  searchLabel?: string
+  /** 16px location icon at the left of the address bar (defaults to the shell tile) */
+  addressIcon?: ReactNode
   /** called when the user presses Enter in the address field */
   onNavigate?: (value: string) => void
 }
@@ -88,6 +92,8 @@ function SearchGlyph() {
 export function ShellToolbar({
   crumbs,
   searchPlaceholder = 'Search',
+  searchLabel,
+  addressIcon,
   onNavigate,
 }: ShellToolbarProps): ReactNode {
   const [search, setSearch] = useState('')
@@ -101,7 +107,7 @@ export function ShellToolbar({
         aria-label="Address"
         aria-expanded="false"
       >
-        <AddressIcon />
+        {addressIcon ?? <AddressIcon />}
         <nav className={styles.crumbs} aria-label="Breadcrumb">
           {crumbs.map((crumb, i) => (
             <span key={i} className={styles.crumb}>
@@ -162,7 +168,7 @@ export function ShellToolbar({
           onChange={(e) => {
             setSearch(e.target.value)
           }}
-          aria-label={searchPlaceholder}
+          aria-label={searchLabel ?? searchPlaceholder}
         />
         <SearchGlyph />
       </label>
