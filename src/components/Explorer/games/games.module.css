@@ -1,0 +1,219 @@
+/* Shared styles for the playable Games Explorer games.
+   Clean Vista-flavoured surfaces, nothing over the top. */
+
+.stage {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #fdfefe 0%, #eef5f7 100%);
+  overflow: hidden;
+}
+
+.stageScroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.gameBar {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  background: linear-gradient(180deg, #f4f9fb 0%, #ddeaf0 100%);
+  border-bottom: 1px solid #c3d3da;
+  font-size: 12px;
+  color: #22333c;
+}
+
+.gameBarTitle {
+  font-weight: 600;
+  color: #173c50;
+}
+
+.gameBarSpacer {
+  flex: 1 1 auto;
+}
+
+.gameStatus {
+  color: #47616e;
+}
+
+.gameButton {
+  padding: 3px 12px;
+  font-family: inherit;
+  font-size: 12px;
+  color: #173c50;
+  background: linear-gradient(180deg, #ffffff 0%, #dfeef5 55%, #c8e0ec 100%);
+  border: 1px solid #7fa6b8;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+}
+
+.gameButton:hover {
+  background: linear-gradient(180deg, #ffffff 0%, #eaf6fd 55%, #bcdcf2 100%);
+  border-color: #5b93ad;
+}
+
+.gameButton:active {
+  filter: brightness(0.95);
+}
+
+.winBanner {
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #14532d;
+  background: linear-gradient(180deg, #e7f8ec 0%, #cdeed6 100%);
+  border: 1px solid #7cc48f;
+  border-radius: 4px;
+}
+
+/* ---------------- playing cards ---------------- */
+
+.pcard {
+  position: relative;
+  width: 54px;
+  height: 76px;
+  flex: 0 0 auto;
+  background: linear-gradient(160deg, #ffffff 0%, #f4f7f8 100%);
+  border: 1px solid #8d9aa1;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px rgba(20, 40, 50, 0.25);
+  color: #1d2a31;
+  user-select: none;
+}
+
+.pcardSmall {
+  width: 44px;
+  height: 62px;
+  border-radius: 4px;
+}
+
+.pcardRed {
+  color: #c0272d;
+}
+
+.pcardDown {
+  background: linear-gradient(150deg, #3d7dc4 0%, #1f4f8f 55%, #173f74 100%);
+  border-color: #12325e;
+  overflow: hidden;
+}
+
+.pcardBackPattern {
+  position: absolute;
+  inset: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 3px;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.16) 0 4px,
+    rgba(255, 255, 255, 0) 4px 8px
+  );
+}
+
+.pcardSelected {
+  outline: 2px solid #2f7fc4;
+  outline-offset: 1px;
+  box-shadow:
+    0 0 0 3px rgba(120, 200, 245, 0.45),
+    0 2px 4px rgba(20, 40, 50, 0.3);
+  transform: translateY(-3px);
+}
+
+.pcardCornerTop {
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+}
+
+.pcardCornerBottom {
+  position: absolute;
+  bottom: 3px;
+  right: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+  transform: rotate(180deg);
+}
+
+.pcardRank {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.pcardSmall .pcardRank {
+  font-size: 11px;
+}
+
+.pcardSuitSmall {
+  font-size: 10px;
+}
+
+.pcardCenter {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+}
+
+.pcardSmall .pcardCenter {
+  font-size: 20px;
+}
+
+.pileSlot {
+  width: 54px;
+  height: 76px;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px dashed rgba(90, 120, 135, 0.5);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.pileSlotSmall {
+  width: 44px;
+  height: 62px;
+}
+
+.pileLabel {
+  font-size: 15px;
+  color: rgba(70, 100, 115, 0.65);
+}
+
+/* overlapping card columns (tableau / cascades) */
+.cardStack {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardStack > * + * {
+  margin-top: -52px;
+}
+
+.cardStackSmall > * + * {
+  margin-top: -40px;
+}
+
+.feltRow {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}

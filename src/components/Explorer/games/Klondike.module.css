@@ -1,0 +1,12 @@
+/* Klondike layout: top row (stock / waste / foundations) + tableau row. */
+
+.board {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.gap {
+  width: 54px;
+  flex: 0 0 auto;
+}

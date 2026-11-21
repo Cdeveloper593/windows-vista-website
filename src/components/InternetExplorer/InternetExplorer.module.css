@@ -1,0 +1,426 @@
+/* Internet Explorer 8 on Vista — chrome inside the shared Aero window.
+   The Window component supplies the glass caption row (with the pearly
+   nav controls) and the pale address band; this module styles the IE
+   toolbar content, tab strip, start page, web view and status bar. */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  background: #fff;
+}
+
+/* ---------------- toolbar row (inside the Window toolbar band) ---------------- */
+
+.toolButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 24px;
+  flex: 0 0 auto;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.toolButton:hover:not(:disabled) {
+  background: linear-gradient(180deg, #fdfefe 0%, #dceef8 55%, #bcdcf2 100%);
+  border-color: #8fb8d4;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.toolButton:active:not(:disabled) {
+  background: linear-gradient(180deg, #cfe6f5 0%, #a9cfe9 100%);
+}
+
+.toolButton:disabled {
+  opacity: 0.38;
+  cursor: default;
+}
+
+.addressField {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 25px;
+  padding: 0 7px;
+  background: linear-gradient(180deg, #eef6f7 0%, #ffffff 30%, #ffffff 100%);
+  border: 1px solid #6d7d84;
+  border-radius: 3px;
+  box-shadow:
+    inset 0 1px 2px rgba(9, 30, 37, 0.28),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+}
+
+.addressIcon {
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+.addressInput {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font: inherit;
+  font-size: 12.5px;
+  color: #16242c;
+}
+
+.addressInput::placeholder {
+  color: #7c8a91;
+  font-style: italic;
+}
+
+.loadingDot {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: #2f8fd0;
+  animation: ie-pulse 0.9s ease-in-out infinite;
+}
+
+@keyframes ie-pulse {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ---------------- tab strip ---------------- */
+
+.tabStrip {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  flex: 0 0 auto;
+  padding: 5px 6px 0;
+  background: linear-gradient(180deg, #d7e7f2 0%, #bcd4e6 100%);
+  border-bottom: 1px solid #7f9db5;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 190px;
+  min-width: 110px;
+  height: 26px;
+  padding: 0 6px 0 9px;
+  border: 1px solid #7f9db5;
+  border-bottom: none;
+  border-radius: 7px 7px 0 0;
+  background: linear-gradient(180deg, #c3d8e8 0%, #a9c3da 100%);
+  color: #33505f;
+  font-size: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.tab:hover {
+  background: linear-gradient(180deg, #d2e4f1 0%, #b5cfe4 100%);
+}
+
+.tabActive {
+  background: linear-gradient(180deg, #ffffff 0%, #f2f8fb 100%);
+  color: #16242c;
+  height: 27px;
+  margin-bottom: -1px;
+  padding-bottom: 1px;
+}
+
+.tabLabel {
+  flex: 1 1 auto;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tabClose {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  background: transparent;
+  color: #5a707c;
+  cursor: pointer;
+}
+
+.tabClose:hover {
+  background: linear-gradient(180deg, #f6c1a8 0%, #dd6a3c 100%);
+  border-color: #9c3d17;
+  color: #fff;
+}
+
+.newTabButton {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+  margin-bottom: 2px;
+  padding: 0;
+  border: 1px solid #7f9db5;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #eef6fb 0%, #c2d9ea 100%);
+  color: #33505f;
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.newTabButton:hover:not(:disabled) {
+  background: linear-gradient(180deg, #ffffff 0%, #aed2ee 100%);
+}
+
+.newTabButton:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* ---------------- info strip ---------------- */
+
+.infoStrip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+  padding: 4px 10px;
+  background: linear-gradient(180deg, #fffbe8 0%, #fdf3c8 100%);
+  border-bottom: 1px solid #d9c979;
+  color: #5c5320;
+  font-size: 11.5px;
+}
+
+.infoStrip span {
+  flex: 1 1 auto;
+}
+
+.infoClose {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #8a7c2e;
+  cursor: pointer;
+}
+
+.infoClose:hover {
+  color: #4c4315;
+}
+
+/* ---------------- web view ---------------- */
+
+.webview {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  background: #fff;
+}
+
+.frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #fff;
+}
+
+/* ---------------- start page ---------------- */
+
+.startPage {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  background: linear-gradient(180deg, #f4f9fc 0%, #e3eef5 100%);
+}
+
+.liveBand {
+  padding: 26px 32px 20px;
+  background: linear-gradient(180deg, #2a6ea5 0%, #1c557f 58%, #174a6e 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.liveWordmark {
+  margin: 0 0 14px;
+  font-size: 27px;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  color: #eaf5fc;
+  text-shadow: 0 1px 3px rgba(4, 30, 48, 0.6);
+}
+
+.liveTm {
+  font-size: 11px;
+  vertical-align: super;
+}
+
+.liveSearch {
+  font-weight: 600;
+  color: #a9dcf5;
+}
+
+.liveForm {
+  display: flex;
+  gap: 8px;
+  max-width: 560px;
+}
+
+.liveInput {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 30px;
+  padding: 0 10px;
+  border: 1px solid #0d3a56;
+  border-radius: 3px;
+  font: inherit;
+  font-size: 14px;
+  color: #16242c;
+  box-shadow: inset 0 1px 3px rgba(9, 30, 37, 0.35);
+}
+
+.liveButton {
+  flex: 0 0 auto;
+  height: 30px;
+  padding: 0 20px;
+  border: 1px solid #7fae2c;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #c4e26b 0%, #93c23a 55%, #79a92a 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+  color: #22380d;
+  font: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.liveButton:hover {
+  filter: brightness(1.06);
+}
+
+.liveHint {
+  margin: 10px 0 0;
+  font-size: 11.5px;
+  color: #c8e2f0;
+}
+
+.favourites {
+  padding: 18px 32px 24px;
+}
+
+.favouritesTitle {
+  margin: 0 0 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #174a6e;
+}
+
+.tileGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 10px;
+}
+
+.tile {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 10px 12px;
+  border: 1px solid #b9d2e2;
+  border-radius: 5px;
+  background: linear-gradient(180deg, #ffffff 0%, #e9f3f9 100%);
+  box-shadow: 0 1px 2px rgba(23, 60, 84, 0.12);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.tile:hover {
+  border-color: #6ea8cf;
+  background: linear-gradient(180deg, #ffffff 0%, #d8ecfa 100%);
+}
+
+.tileIcon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  filter: drop-shadow(0 1px 1px rgba(10, 40, 60, 0.35));
+}
+
+.tileText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.tileName {
+  font-size: 13px;
+  font-weight: 600;
+  color: #14405f;
+}
+
+.tileDescription {
+  font-size: 11px;
+  line-height: 1.35;
+  color: #5d7480;
+}
+
+.favouritesNote {
+  margin: 14px 0 0;
+  max-width: 640px;
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: #5d7480;
+}
+
+/* ---------------- status bar ---------------- */
+
+.statusBar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 0 0 auto;
+  height: 23px;
+  padding: 0 10px;
+  background: linear-gradient(180deg, #eef4f6 0%, #d7e4e9 100%);
+  border-top: 1px solid #a7bcc5;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  font-size: 11px;
+  color: #3c545f;
+}
+
+.statusLeft {
+  flex: 1 1 auto;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.statusRight {
+  flex: 0 0 auto;
+  padding-left: 12px;
+  border-left: 1px solid #b3c6cd;
+  color: #47616e;
+}

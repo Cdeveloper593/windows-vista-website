@@ -1,0 +1,12 @@
+/* FreeCell layout: top row (free cells / foundations) + 8 cascades. */
+
+.board {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.gap {
+  width: 28px;
+  flex: 0 0 auto;
+}

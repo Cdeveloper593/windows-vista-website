@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
-import { useWindowStore } from '../../store/windowStore'
+import { useWindowStore, type WindowId } from '../../store/windowStore'
 import {
   InternetExplorerIcon,
   WindowsMailIcon,
@@ -36,6 +36,8 @@ interface PinnedItem {
   icon: ReactNode
   name: string
   sub: string
+  /** window this pinned item launches, if it is a real app */
+  windowId?: WindowId
 }
 
 interface ProgramItem {
@@ -50,6 +52,7 @@ const PINNED: PinnedItem[] = [
     icon: <InternetExplorerIcon size={34} />,
     name: 'Internet',
     sub: 'Internet Explorer',
+    windowId: 'internet-explorer',
   },
   { id: 'mail', icon: <WindowsMailIcon size={34} />, name: 'E-mail', sub: 'Windows Mail' },
 ]
@@ -101,6 +104,7 @@ export interface StartMenuProps {
 
 export function StartMenu({ onPowerAction }: StartMenuProps) {
   const setStartMenuOpen = useWindowStore((s) => s.setStartMenuOpen)
+  const openWindow = useWindowStore((s) => s.openWindow)
   const [query, setQuery] = useState('')
   const [recentOpen, setRecentOpen] = useState(false)
   const [powerFlyoutOpen, setPowerFlyoutOpen] = useState(false)
@@ -226,7 +230,10 @@ export function StartMenu({ onPowerAction }: StartMenuProps) {
               role="menuitem"
               data-menu-item="true"
               className={styles.pinnedItem}
-              onClick={close}
+              onClick={() => {
+                if (item.windowId) openWindow(item.windowId)
+                close()
+              }}
             >
               <span className={styles.pinnedIcon}>{item.icon}</span>
               <span className={styles.pinnedText}>

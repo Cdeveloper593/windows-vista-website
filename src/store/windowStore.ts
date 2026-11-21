@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-export type WindowId = 'welcome' | 'recycle-bin' | 'games' | 'file-explorer'
+export type WindowId = 'welcome' | 'recycle-bin' | 'games' | 'file-explorer' | 'internet-explorer'
 
 export interface WindowEntry {
   id: WindowId
@@ -82,10 +82,10 @@ export function createInitialWindows(): Record<WindowId, WindowEntry> {
       isMaximized: false,
       isClosing: false,
       zIndex: 0,
-      x: 300,
-      y: 200,
-      width: 640,
-      height: 440,
+      x: 240,
+      y: 130,
+      width: 820,
+      height: 600,
     },
     'file-explorer': {
       id: 'file-explorer',
@@ -99,6 +99,19 @@ export function createInitialWindows(): Record<WindowId, WindowEntry> {
       y: 210,
       width: 700,
       height: 500,
+    },
+    'internet-explorer': {
+      id: 'internet-explorer',
+      title: 'Internet Explorer',
+      isOpen: false,
+      isMinimized: false,
+      isMaximized: false,
+      isClosing: false,
+      zIndex: 0,
+      x: 180,
+      y: 90,
+      width: 900,
+      height: 600,
     },
   }
 }

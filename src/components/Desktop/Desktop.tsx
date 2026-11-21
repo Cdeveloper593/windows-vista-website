@@ -6,9 +6,16 @@ import { WelcomeCenter } from '../WelcomeCenter/WelcomeCenter'
 import { FileExplorerWindow } from '../Explorer/FileExplorerWindow'
 import { RecycleBinWindow } from '../Explorer/RecycleBinWindow'
 import { GamesWindow } from '../Explorer/GamesWindow'
+import { InternetExplorerWindow } from '../InternetExplorer/InternetExplorer'
 import { Sidebar } from '../Sidebar/Sidebar'
 import { StartMenu } from '../StartMenu/StartMenu'
-import { ComputerIcon, FlowerAvatarIcon, GamesIcon, RecycleBinIcon } from '../icons'
+import {
+  ComputerIcon,
+  FlowerAvatarIcon,
+  GamesIcon,
+  InternetExplorerIcon,
+  RecycleBinIcon,
+} from '../icons'
 import styles from './Desktop.module.css'
 
 type PowerOverlay = 'shutdown' | 'lock' | null
@@ -47,6 +54,11 @@ export function Desktop() {
         />
         <DesktopIcon label="Games" windowId="games" icon={<GamesIcon size={54} />} />
         <DesktopIcon label="Computer" windowId="file-explorer" icon={<ComputerIcon size={54} />} />
+        <DesktopIcon
+          label="Internet Explorer"
+          windowId="internet-explorer"
+          icon={<InternetExplorerIcon size={54} />}
+        />
       </div>
 
       {/* windows */}
@@ -54,6 +66,7 @@ export function Desktop() {
       <RecycleBinWindow />
       <GamesWindow />
       <FileExplorerWindow />
+      <InternetExplorerWindow />
 
       {/* sidebar gadgets */}
       <Sidebar />

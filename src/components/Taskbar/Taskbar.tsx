@@ -1,10 +1,12 @@
 import { StartOrb } from './StartOrb'
 import { TaskbarButton } from './TaskbarButton'
 import { SystemTray } from './SystemTray'
+import { useWindowStore } from '../../store/windowStore'
 import { ShowDesktopIcon, SwitchWindowsIcon, InternetExplorerIcon, MediaPlayerIcon } from '../icons'
 import styles from './Taskbar.module.css'
 
 export function Taskbar() {
+  const openWindow = useWindowStore((s) => s.openWindow)
   return (
     <footer className={styles.taskbar} aria-label="Taskbar">
       <StartOrb />
@@ -32,6 +34,9 @@ export function Taskbar() {
           className={styles.quickLaunchButton}
           aria-label="Internet Explorer"
           title="Internet Explorer"
+          onClick={() => {
+            openWindow('internet-explorer')
+          }}
         >
           <InternetExplorerIcon size={18} />
         </button>
@@ -53,6 +58,7 @@ export function Taskbar() {
         <TaskbarButton id="recycle-bin" />
         <TaskbarButton id="games" />
         <TaskbarButton id="file-explorer" />
+        <TaskbarButton id="internet-explorer" />
       </div>
 
       {/* active app status text spacer */}

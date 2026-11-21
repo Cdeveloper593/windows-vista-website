@@ -1,6 +1,12 @@
 import type { ReactNode } from 'react'
 import { useWindowStore, type WindowId } from '../../store/windowStore'
-import { FileExplorerIcon, GamesIcon, RecycleBinIcon, WelcomeCapsuleIcon } from '../icons'
+import {
+  FileExplorerIcon,
+  GamesIcon,
+  InternetExplorerIcon,
+  RecycleBinIcon,
+  WelcomeCapsuleIcon,
+} from '../icons'
 import styles from './Taskbar.module.css'
 
 const WINDOW_ICONS: Record<WindowId, ReactNode> = {
@@ -8,6 +14,7 @@ const WINDOW_ICONS: Record<WindowId, ReactNode> = {
   'recycle-bin': <RecycleBinIcon size={17} />,
   games: <GamesIcon size={17} />,
   'file-explorer': <FileExplorerIcon size={17} />,
+  'internet-explorer': <InternetExplorerIcon size={17} />,
 }
 
 export function TaskbarButton({ id }: { id: WindowId }) {
