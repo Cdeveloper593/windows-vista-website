@@ -2,7 +2,9 @@
   position: absolute;
   display: flex;
   flex-direction: column;
-  padding: 3px;
+  /* Aero glass frame: ~7px of glass on the sides and bottom; the caption
+     row itself forms the top glass, so no padding there. */
+  padding: 0 7px 7px;
   background: var(--frame-bg);
   backdrop-filter: blur(26px) saturate(1.2);
   -webkit-backdrop-filter: blur(26px) saturate(1.2);
@@ -53,7 +55,7 @@
   height: 100%;
   border-radius: 6px;
   overflow: hidden;
-  box-shadow: inset 0 0 0 1px rgba(8, 22, 27, 0.85);
+  box-shadow: inset 0 0 0 1px rgba(8, 22, 27, 0.55);
 }
 
 /* ---------------- glass caption row ---------------- */
