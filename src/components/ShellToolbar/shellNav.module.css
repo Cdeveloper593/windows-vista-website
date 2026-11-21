@@ -1,45 +1,53 @@
-/* Shell navigation circles — imported by Window after its module CSS. */
+/* Shell navigation circles — imported by Window after its module CSS.
+   Real Vista (Welcome Center reference): both buttons are pale silver-blue
+   glass pearls with a thin grey outline and gentle bottom shading — back is
+   LARGER than forward (~30px vs ~25px), and the disabled forward pearl is
+   the same brightness as back; only its arrow is grey. */
 
 .shellNavCircle {
-  width: 29px;
-  height: 29px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   background: radial-gradient(
-    circle at 36% 30%,
+    circle at 38% 28%,
     #ffffff 0%,
-    #e6edee 32%,
-    #b9cdd2 62%,
-    #74919b 88%,
-    #3c525c 100%
+    #eef4f5 34%,
+    #cfdde1 58%,
+    #a9bfc7 82%,
+    #8ba3ad 100%
   );
-  border: 1px solid rgba(6, 20, 26, 0.85);
+  border: 1px solid rgba(52, 74, 84, 0.6);
   box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.95),
-    inset 0 -2px 3px rgba(20, 44, 54, 0.55),
-    0 1px 1px rgba(255, 255, 255, 0.35),
-    0 0 6px rgba(140, 230, 250, 0.25);
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    inset 0 -3px 5px rgba(70, 95, 105, 0.28),
+    0 1px 2px rgba(20, 40, 50, 0.25);
   transition:
     box-shadow 0.15s ease,
     filter 0.15s ease;
+  flex: 0 0 auto;
+}
+
+.shellNavBack {
+  width: 30px;
+  height: 30px;
+}
+
+.shellNavForward {
+  width: 25px;
+  height: 25px;
 }
 
 .shellNavCircle:not(:disabled):hover {
   box-shadow:
     inset 0 1px 1px rgba(255, 255, 255, 0.95),
-    inset 0 -2px 3px rgba(20, 44, 54, 0.55),
+    inset 0 -3px 5px rgba(70, 95, 105, 0.28),
     0 0 10px rgba(170, 240, 255, 0.75),
     0 0 22px rgba(120, 220, 250, 0.45);
 }
 
 .shellNavCircle:not(:disabled):active {
-  filter: brightness(0.85);
-}
-
-.shellNavCircle:disabled {
-  filter: saturate(0.25) brightness(0.82);
+  filter: brightness(0.9);
 }
 
 .shellNavDropdown {

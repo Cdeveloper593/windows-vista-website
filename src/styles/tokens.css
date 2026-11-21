@@ -63,25 +63,31 @@
      pale blue-white and translucent (sampled #aec6dd / #c5dcf3 / #e6f0fa with
      soft diagonal light streaks), never an opaque teal slab — the wallpaper
      tints it through the blur. */
+  /* Sampled pixel-by-pixel from the user's real Vista screenshot
+     (2026-11-21): the Aero titlebar glass is a distinctly CYAN-BLUE milky
+     glass — #c1e4eb at the top edge, deepening to ~#98c5d3 mid-row, then
+     lightening again toward the bottom edge. Not white. The diagonal
+     sheen is very soft in the real glass. */
   --titlebar-bg:
     linear-gradient(
       112deg,
       rgba(255, 255, 255, 0) 26%,
-      rgba(255, 255, 255, 0.38) 40%,
+      rgba(255, 255, 255, 0.16) 40%,
       rgba(255, 255, 255, 0) 54%
     ),
     linear-gradient(
       238deg,
       rgba(255, 255, 255, 0) 52%,
-      rgba(255, 255, 255, 0.24) 66%,
+      rgba(255, 255, 255, 0.1) 66%,
       rgba(255, 255, 255, 0) 82%
     ),
     linear-gradient(
       180deg,
-      rgba(242, 249, 252, 0.58) 0%,
-      rgba(208, 232, 243, 0.42) 46%,
-      rgba(178, 213, 229, 0.45) 54%,
-      rgba(216, 239, 248, 0.52) 100%
+      rgba(193, 228, 235, 0.92) 0%,
+      rgba(177, 216, 226, 0.9) 30%,
+      rgba(158, 203, 216, 0.9) 58%,
+      rgba(171, 213, 224, 0.91) 82%,
+      rgba(186, 224, 233, 0.93) 100%
     );
   --titlebar-text: rgba(235, 248, 250, 0.92);
   --titlebar-glow: rgba(120, 230, 245, 0.5);
@@ -91,9 +97,9 @@
      opaque ones in the comparison image). */
   --toolbar-bg: linear-gradient(
     180deg,
-    rgba(240, 248, 250, 0.85) 0%,
-    rgba(222, 238, 243, 0.8) 55%,
-    rgba(198, 224, 233, 0.86) 100%
+    rgba(223, 238, 244, 0.92) 0%,
+    rgba(238, 246, 248, 0.9) 55%,
+    rgba(189, 219, 229, 0.93) 100%
   );
   --toolbar-border: rgba(13, 44, 52, 0.55);
   --toolbar-text: #142e35;
@@ -119,9 +125,9 @@
   /* ---- Glass frame of windows ---- */
   --frame-bg: linear-gradient(
     165deg,
-    rgba(214, 235, 245, 0.68) 0%,
-    rgba(173, 208, 224, 0.6) 40%,
-    rgba(196, 226, 238, 0.64) 100%
+    rgba(186, 222, 232, 0.66) 0%,
+    rgba(160, 203, 218, 0.6) 40%,
+    rgba(178, 218, 229, 0.64) 100%
   );
 
   /* ---- Welcome header (teal panel) ---- */

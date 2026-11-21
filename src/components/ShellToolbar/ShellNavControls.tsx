@@ -1,8 +1,10 @@
 import styles from './shellNav.module.css'
 
 /**
- * Large pearly glass back/forward navigation circles used in the
- * Vista shell toolbar row.
+ * Pearly glass back/forward navigation circles in the Vista titlebar row.
+ * Real Vista uses BOLD FILLED arrows (not line-drawn chevrons): back is
+ * dark slate, the disabled forward arrow is medium grey, and the forward
+ * pearl is smaller than the back pearl.
  */
 export function ShellNavControls() {
   return (
@@ -13,35 +15,20 @@ export function ShellNavControls() {
         aria-label="Back"
         title="Back"
       >
-        <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
-          <path
-            d="M14.5 5.5 8 12l6.5 6.5M8.8 12H20"
-            fill="none"
-            stroke="#12333f"
-            strokeWidth="2.4"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+          <path d="M21 10.3h-8.2V5.6L4.6 12l8.2 6.4v-4.7H21z" fill="#26333b" />
         </svg>
       </button>
       <button
         type="button"
-        className={styles.shellNavCircle}
+        className={`${styles.shellNavCircle} ${styles.shellNavForward}`}
         aria-label="Forward"
         title="Forward"
         aria-disabled="true"
         disabled
       >
-        <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
-          <path
-            d="M9.5 5.5 16 12l-6.5 6.5M15.2 12H4"
-            fill="none"
-            stroke="#27414c"
-            strokeWidth="2.4"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            opacity="0.7"
-          />
+        <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true">
+          <path d="M3 10.3h8.2V5.6L19.4 12l-8.2 6.4v-4.7H3z" fill="#8a959b" />
         </svg>
       </button>
       <button
